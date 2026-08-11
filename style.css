@@ -1,0 +1,305 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  background-image: url('gambar.jpg');
+  background-size: cover;           /* menutupi seluruh area */
+  background-position: center center; /* fokus ke tengah */
+  background-repeat: no-repeat;      /* tidak diulang */
+  background-attachment: fixed;      /* tetap saat scroll (opsional) */
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* ===== SCROLL CONTAINER ===== */
+.scroll {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+/* ===== SETIAP HALAMAN ===== */
+.halaman {
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 10px;
+}
+.halaman-pertama {
+  justify-content: flex-start;
+  padding-top: 30px;
+}
+.halaman h4 {
+  color: white;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+/* ===== HEADER 3 GAMBAR ===== */
+.header-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.jarak {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+}
+.item-gambar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.item-gambar img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 3px solid white;
+  background: #222;
+  border-radius: 0;
+}
+.item-gambar span {
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+/* ===== DAFTAR MURID ===== */
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  max-height: 70vh;
+  overflow-y: auto;
+  width: 100%;
+  max-width: 500px;
+  padding: 5px;
+  align-content: start;
+}
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border: 2px solid white;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+/* ===== POPUP UMUM ===== */
+.popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 9999;
+}
+.slider {
+  display: flex;
+  width: 100vw;
+  height: 80vh;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 0;
+}
+.slider img {
+  flex: 0 0 100vw;
+  width: 100vw;
+  height: 100%;
+  object-fit: contain;
+  scroll-snap-align: center;
+}
+.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+}
+#nama {
+  color: white;
+  margin-top: 15px;
+  font-size: 1.2rem;
+}
+
+/* ===== ALBUM ===== */
+.album-menu {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.album-card {
+  width: 140px;
+  cursor: pointer;
+  text-align: center;
+}
+.album-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+.album-card p {
+  color: white;
+  margin-top: 5px;
+}
+
+/* ===== POPUP FOTO (album) ===== */
+#popupFoto {
+  flex-direction: row;
+}
+#popupFoto button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+#popupFoto button:first-child { left: 20px; }
+#popupFoto button:nth-child(3) { right: 20px; }
+#popupFoto img {
+  width: 80%;
+  max-width: 600px;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* ===== VIDEO ===== */
+.video-container {
+  position: relative;
+  width: 90%;
+  max-width: 700px;
+}
+.video-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.kiri { left: 10px; }
+.kanan { right: 10px; }
+.video-nav:hover { background: rgba(0,0,0,0.8); }
+.playlist-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 11;
+}
+.playlist {
+  display: none;
+  position: absolute;
+  right: 10px;
+  bottom: 65px;
+  width: 220px;
+  max-height: 250px;
+  overflow-y: auto;
+  background: #111;
+  border-radius: 10px;
+  z-index: 12;
+}
+.playlist div {
+  padding: 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #333;
+}
+.playlist div:hover { background: #222; }
+.item-video {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+.item-video img {
+  width: 100px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.item-video h4 { color: white; font-size: 14px; }
+.item-video p { color: #aaa; font-size: 12px; }
+#videoPlayer {
+  width: 100%;
+  border-radius: 15px;
+}
+
+/* ===== JEJAK (TRAIL) ===== */
+.trail {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: #00ffff;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: trail 0.8s linear forwards;
+}
+@keyframes trail {
+  from { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+  to { opacity: 0; transform: translate(-50%,-50%) scale(3); }
+}
+body.popup-active .trail { display: none; }
+
+/* ===== DEVELOPER ===== */
+.developer {
+  color: white;
+  text-align: center;
+  margin-top: 20px;
+}
+.terakhir {
+  color: white;
+  margin-top: 50px;
+  text-align: center;
+}
